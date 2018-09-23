@@ -7,7 +7,7 @@ import java.util.Vector;
 /**
  * create by liting 2018/9/15
  */
-public class StringQuestion {
+public class StringQuestion1 {
 
 
     public static void main(String[] args){

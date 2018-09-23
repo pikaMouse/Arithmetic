@@ -3,26 +3,38 @@ package com.example.pikamouse.arithmetic.util;
 /**
  * create by liting 2018/9/20
  */
-public class SortInsert {
+public class SortQuick {
 
 
     public static void main(String[]args){
         int[]arr = new int[]{3,2,5,6,7,1,9};
-        sort(arr);
+        sort(arr,0,arr.length - 1);
         for(int i : arr){
             System.out.print(i);
         }
     }
 
-    private static void sort(int[]arr){
-        int len = arr.length;
-        for(int i = 1; i < len; i++){
-            int j = i;
-            while(j > 0 && arr[j - 1] > arr[j]){
-                swap(arr,j,j-1);
-                j--;
-            }
+    private static void sort(int[]arr,int left,int right){
+        if(left < right){
+            int pivot = partition(arr,left,right);
+            sort(arr,left,pivot - 1);
+            sort(arr,pivot + 1,right);
         }
+    }
+
+    private static int partition(int[]arr,int left,int right){
+        int pivot = arr[left];
+        while (left < right){
+            while (left < right && arr[right] >= pivot){
+                right--;
+            }
+            swap(arr,left,right);
+            while (left < right && arr[left] <= pivot){
+                left++;
+            }
+            swap(arr,left,right);
+        }
+        return left;
     }
 
 
@@ -31,4 +43,7 @@ public class SortInsert {
         arr[a] = arr[b];
         arr[b] = temp;
     }
+
+
+
 }

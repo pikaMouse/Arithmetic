@@ -1,4 +1,4 @@
-package com.example.pikamouse.arithmetic;
+package com.example.pikamouse.arithmetic.test;
 
 import java.util.Scanner;
 
@@ -43,6 +43,9 @@ public class Test1 {
 
         if(str1.length() == str2.length()){
             System.out.print(str1.length() - result);
+        }else if(str1.length() == 0 || str2.length() == 0){
+            int len = str1.length() == 0 ? str2.length() : str1.length();
+            System.out.print(len);
         }else {
             System.out.print((str1.length() - result + str2.length() - result));
 

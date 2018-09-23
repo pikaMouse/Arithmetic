@@ -1,4 +1,4 @@
-package com.example.pikamouse.arithmetic.leetcode;
+package com.example.pikamouse.arithmetic.leetcode.node;
 
 /**
  * create by liting 2018/9/20
@@ -15,16 +15,16 @@ public class LeetCode19 {
     public static void main(String[]args){
         LeetCode19 leetCode19 = new LeetCode19();
         ListNode node1 = leetCode19.new ListNode(0);
-//        ListNode node2 = leetCode19.new ListNode(1);
-//        ListNode node3= leetCode19.new ListNode(2);
-//        ListNode node4 = leetCode19.new ListNode(3);
-//        ListNode node5 = leetCode19.new ListNode(4);
-//        ListNode node6 = leetCode19.new ListNode(5);
-//        node1.next = node2;
-//        node2.next = node3;
-//        node3.next = node4;
-//        node4.next  = node5;
-//        node5.next = node6;
+        ListNode node2 = leetCode19.new ListNode(1);
+        ListNode node3= leetCode19.new ListNode(2);
+        ListNode node4 = leetCode19.new ListNode(3);
+        ListNode node5 = leetCode19.new ListNode(4);
+        ListNode node6 = leetCode19.new ListNode(5);
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        node4.next  = node5;
+        node5.next = node6;
         ListNode h = leetCode19.removeNthFromEnd(node1,1);
         while (h != null){
             System.out.println(h.val);
@@ -37,24 +37,22 @@ public class LeetCode19 {
         if(head == null){
             return null;
         }
-        if(head.next == null){
-            return null;
-        }
-        ListNode newHead = head;
-        ListNode currL = head;
-        ListNode currR = head;
-        while (n > 0){
-            if (currR.next != null) currR = currR.next;
-            n--;
+        //避免只有一个结点时，删除一个结点的报错,必须加多一个结点
+        ListNode node = new ListNode(-1);
+        ListNode newHead = node;
+        node.next = head;
+        ListNode currL = newHead;
+        ListNode currR = newHead;
+        for(int i = 0; i < n;i++){
+            currR = currR.next;
         }
         while (currR.next != null){
             currL = currL.next;
             currR = currR.next;
         }
-        if(currL.next != null && currL.next.next != null){
-            currL.next = currL.next.next;
-        }
-        return newHead;
+        currL.next = currL.next.next;
+
+        return newHead.next;
 
     }
 

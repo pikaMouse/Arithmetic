@@ -2,6 +2,11 @@ package com.example.pikamouse.arithmetic.util;
 
 /**
  * create by liting 2018/9/14
+ *
+ *
+ *
+ * 解法：求最大公约数方法：辗转相除法
+ *      求最小公倍数方法：最小公倍数等于两数之积除以最大公约数
  */
 public class GongyueAndGongbei {
 

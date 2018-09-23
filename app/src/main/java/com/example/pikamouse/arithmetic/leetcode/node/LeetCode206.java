@@ -3,7 +3,7 @@ package com.example.pikamouse.arithmetic.leetcode.node;
 /**
  * create by liting 2018/9/20
  */
-public class LeetCode {
+public class LeetCode206 {
 
     public class ListNode {
         int val;
@@ -13,7 +13,7 @@ public class LeetCode {
 
 
     public static void main(String[]args){
-        LeetCode leetCode = new LeetCode();
+        LeetCode206 leetCode = new LeetCode206();
         ListNode node1 = leetCode.new ListNode(0);
         ListNode node2 = leetCode.new ListNode(1);
         ListNode node3= leetCode.new ListNode(2);
