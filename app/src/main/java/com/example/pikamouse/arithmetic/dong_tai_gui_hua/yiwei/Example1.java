@@ -21,7 +21,7 @@ public class Example1 {
 
 
     public static void main(String[]args){
-        int[]arr = new int[]{2,0,1,1,1};
+        int[]arr = new int[]{3,2,1,0,4};
         System.out.print(minJump(arr));
 
     }
@@ -44,7 +44,7 @@ public class Example1 {
                 }
             }
         }
-        return dp[len]==Integer.MAX_VALUE ? -1 : dp[len];
+        return (dp[len]==Integer.MAX_VALUE) || (dp[len] == Integer.MAX_VALUE + 1) ? -1 : dp[len];
     }
 
 }

@@ -7,7 +7,7 @@ public class SortQuick {
 
 
     public static void main(String[]args){
-        int[]arr = new int[]{3,2,5,6,7,1,9};
+        int[]arr = new int[]{3,2,5,4,6,7,1,9};
         sort(arr,0,arr.length - 1);
         for(int i : arr){
             System.out.print(i);

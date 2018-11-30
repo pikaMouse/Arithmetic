@@ -18,7 +18,7 @@ public class LeetCode83 {
         node3.next = node4;
         node4.next  = node5;
         node5.next = node6;
-        ListNode h = leetCode24.deleteDuplicates(node1);
+        ListNode h = leetCode24.deleteDuplicates1(node1);
         while (h != null){
             System.out.println(h.val);
             h = h.next;
@@ -34,12 +34,34 @@ public class LeetCode83 {
         ListNode(int x) { val = x; }
     }
 
+    private ListNode deleteDuplicates1(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        ListNode newHead = new ListNode(-1);
+        newHead.next = head;
+        ListNode l = newHead;
+        ListNode r = head;
+        while( l != null && r != null){
+            if(l.val == r.val){
+                ListNode node = r.next;
+                r.next = null;
+                l.next = node;
+                r = node;
+            }else {
+                l = l.next;
+                r = r.next;
+            }
+        }
+        return head;
+    }
 
     private ListNode deleteDuplicates(ListNode head) {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode newHead = head;
+
         ListNode p = head;
         while (p != null && p.next != null){
             if(p.val == p.next.val){
@@ -51,7 +73,7 @@ public class LeetCode83 {
             }
 
         }
-        return newHead;
+        return head;
     }
 
 }

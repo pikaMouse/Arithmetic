@@ -1,5 +1,7 @@
 package com.example.pikamouse.arithmetic.leetcode.node;
 
+import java.util.List;
+
 /**
  * create by liting 2018/9/14
  */
@@ -19,17 +21,69 @@ public class LeetCode21 {
         listNode4.next = listNode5;
         listNode5.next = listNode6;
 
-        ListNode node = leetCode21.mergeTwoLists2(listNode1,listNode4);
+        ListNode node = leetCode21.merge1(listNode1,listNode4);
         while (node != null){
             System.out.print(node.val);
             node = node.next;
         }
     }
 
+    private ListNode merge2(ListNode l1,ListNode l2){
+        if(l1 == null || l2 == null){
+            return l1 == null ? l2 : l1;
+        }
+        ListNode newHead = new ListNode(-1);
+        ListNode p = newHead;
+        while (l1 != null && l2 != null){
+            if(l1.val < l2.val){
+                p.next = l1;
+                l1 = l1.next;
+                p = p.next;
+            }else {
+                p.next = l2;
+                l2 = l2.next;
+                p = p.next;
+            }
+        }
+        if(l1 != null) p.next = l1;
+        if(l2 != null) p.next = l2;
+
+        return newHead.next;
+    }
+
     public class ListNode {
       int val;
       ListNode next;
       ListNode(int x) { val = x; }
+    }
+    /**
+     * 我的答案
+     * 已解决
+     * @param l1
+     * @param l2
+     * @return
+     */
+    ListNode merge(ListNode l1, ListNode l2) {
+        ListNode l = new ListNode(0), p = l;
+
+        while (l1 != null && l2 != null) {
+            if (l1.val < l2.val) {
+                p.next = l1;
+                l1 = l1.next;
+            } else {
+                p.next = l2;
+                l2 = l2.next;
+            }
+            p = p.next;
+        }
+
+        if (l1 != null)
+            p.next = l1;
+
+        if (l2 != null)
+            p.next = l2;
+
+        return l.next;
     }
 
     /**
@@ -47,7 +101,7 @@ public class LeetCode21 {
         ListNode currL2 = l2;
         ListNode head = l1;      //head是用来返回的
         //第一种情况，链表2都是小于链表1
-        while(currL1 != null && currL1 != null && currL2.val < currL1.val){
+        while(currL1 != null && currL2 != null && currL2.val < currL1.val){
             ListNode newCurrL2 = currL2.next;
             currL2.next = head;
             head = currL2;
@@ -78,49 +132,29 @@ public class LeetCode21 {
         return head;
     }
 
-    /**
-     * 别人的答案
-     * 已解决
-     * @param l1
-     * @param l2
-     * @return
-     */
-    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+    private static ListNode merge1(ListNode l1,ListNode l2){
         if(l1 == null || l2 == null){
-            return (l1 == null) ? l2 : l1;
+            return l1 == null ? l2 : l1;
         }
-
-        ListNode head = l1;
-        ListNode currL1 = l1;
-        ListNode currL2 = l2;
-
-        while(currL1 != null && currL2 != null && currL2.val < currL1.val){
-            ListNode newCurrL2 = currL2.next;
-            currL2.next = head;
-            head = currL2;
-            currL1 = head;
-            currL2 = newCurrL2;
-        }
-
-        while(currL1 != null && currL2 != null){
-            while(currL1.next != null && currL2 != null && currL1.next.val <= currL2.val){
-                currL1 = currL1.next;
+        ListNode h = new LeetCode21().new ListNode(0);
+        ListNode p = h;
+        while (l1 != null && l2 != null){
+            if(l1.val < l2.val){
+                p.next = l1;
+                l1 = l1.next;
+            }else {
+                p.next = l2;
+                l2 = l2.next;
             }
-
-            if(currL1.next == null && currL2 != null){
-                currL1.next = currL2;
-                return head;
-            }else{
-                ListNode newCurrL2 = currL2.next;
-                ListNode nodeToInsert = currL2;
-                nodeToInsert.next = currL1.next;
-                currL1.next = nodeToInsert;
-                currL2 = newCurrL2;
-                currL1 = currL1.next;
-            }
+            p = p.next;
         }
-
-        return head;
+        if (l1 != null){
+            p.next = l1;
+        }
+        if (l2 != null){
+            p.next = l2;
+        }
+        return h.next;
     }
 
 

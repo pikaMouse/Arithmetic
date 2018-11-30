@@ -27,7 +27,7 @@ public class LeetCode206 {
         node5.next = node6;
         ListNode h = leetCode.reverse(node1);
         while (h != null){
-            System.out.println(h.val);
+            System.out.print(h.val + " ");
             h = h.next;
         }
 

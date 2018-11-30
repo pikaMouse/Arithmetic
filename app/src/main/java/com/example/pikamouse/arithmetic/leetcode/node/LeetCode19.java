@@ -5,21 +5,16 @@ package com.example.pikamouse.arithmetic.leetcode.node;
  */
 public class LeetCode19 {
 
-    public class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) { val = x; }
-    }
 
 
     public static void main(String[]args){
         LeetCode19 leetCode19 = new LeetCode19();
-        ListNode node1 = leetCode19.new ListNode(0);
-        ListNode node2 = leetCode19.new ListNode(1);
-        ListNode node3= leetCode19.new ListNode(2);
-        ListNode node4 = leetCode19.new ListNode(3);
-        ListNode node5 = leetCode19.new ListNode(4);
-        ListNode node6 = leetCode19.new ListNode(5);
+        ListNode node1 = new ListNode(0);
+        ListNode node2 = new ListNode(1);
+        ListNode node3= new ListNode(2);
+        ListNode node4 = new ListNode(3);
+        ListNode node5 = new ListNode(4);
+        ListNode node6 = new ListNode(5);
         node1.next = node2;
         node2.next = node3;
         node3.next = node4;
@@ -46,6 +41,7 @@ public class LeetCode19 {
         for(int i = 0; i < n;i++){
             currR = currR.next;
         }
+        //移到最后的结点，所以是currR.next
         while (currR.next != null){
             currL = currL.next;
             currR = currR.next;

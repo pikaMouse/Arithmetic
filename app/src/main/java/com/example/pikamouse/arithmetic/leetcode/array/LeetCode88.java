@@ -1,4 +1,4 @@
-package com.example.pikamouse.arithmetic.leetcode;
+package com.example.pikamouse.arithmetic.leetcode.array;
 
 /**
  * create by liting 2018/9/14
